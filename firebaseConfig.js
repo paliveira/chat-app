@@ -1,7 +1,7 @@
 // Importar funções do Firebase
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
 import { getAuth, signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js';
-import { getFirestore, collection, addDoc, query, onSnapshot, serverTimestamp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
+import { getFirestore, collection, addDoc, getDocs, query, onSnapshot, serverTimestamp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
 
 
 // Configuração do Firebase
@@ -15,9 +15,11 @@ const firebaseConfig = {
   measurementId: "G-K7RVRQP1LQ"
 };
 // Inicializar Firebase
+
+// Inicializar Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
 // Exportar instâncias
-export { auth, db, signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword, collection, addDoc, query, onSnapshot, serverTimestamp };
+export { auth, db, signInWithEmailAndPassword, signOut, createUserWithEmailAndPassword, collection, addDoc, getDocs, query, onSnapshot, serverTimestamp };
