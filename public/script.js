@@ -1,6 +1,6 @@
 // Inicialize o Firebase
-const auth = firebase.auth();
-const db = firebase.firestore();
+//const auth = firebase.auth();
+//const db = firebase.firestore();
 
 // Função de login
 const loginForm = document.getElementById('loginForm');
