@@ -1,17 +1,16 @@
 const auth = firebase.auth();
 const db = firebase.firestore();
 
-// Sistema de login e registro
+// Sistema de login
 const loginForm = document.getElementById('loginForm');
 const errorMessage = document.getElementById('errorMessage');
-const registerLink = document.getElementById('registerLink');
 
 if (loginForm) {
     loginForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
-        auth.signInWithEmailAndPassword(username + "@chatapp.com", password)
+        auth.signInWithEmailAndPassword(email, password)
             .then(() => {
                 window.location.href = 'chat.html';
             })
@@ -19,52 +18,9 @@ if (loginForm) {
                 errorMessage.textContent = "Erro: " + error.message;
             });
     });
-
-    registerLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        const username = prompt("Escolha um nome de usuário:");
-        const password = prompt("Escolha uma senha:");
-        auth.createUserWithEmailAndPassword(username + "@chatapp.com", password)
-            .then(() => {
-                alert('Usuário registrado com sucesso');
-            })
-            .catch((error) => {
-                errorMessage.textContent = "Erro: " + error.message;
-            });
-    });
 }
 
-// Bate-papo público
-const messageForm = document.getElementById('messageForm');
-const messageInput = document.getElementById('messageInput');
-const chatBox = document.getElementById('chat-box');
-
-if (messageForm) {
-    messageForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const message = messageInput.value;
-        const user = auth.currentUser.email.split('@')[0];
-        db.collection('messages').add({
-            user: user,
-            message: message,
-            timestamp: firebase.firestore.FieldValue.serverTimestamp()
-        });
-        messageInput.value = '';
-    });
-
-    // Exibindo mensagens
-    db.collection('messages').orderBy('timestamp').onSnapshot((snapshot) => {
-        chatBox.innerHTML = '';
-        snapshot.forEach((doc) => {
-            const message = doc.data();
-            const messageElement = document.createElement('div');
-            messageElement.textContent = `${message.user}: ${message.message}`;
-            chatBox.appendChild(messageElement);
-        });
-    });
-}
-
-// Logout
+// Função de logout (usada no chat e admin)
 const logoutButton = document.getElementById('logoutButton');
 if (logoutButton) {
     logoutButton.addEventListener('click', () => {
@@ -73,3 +29,35 @@ if (logoutButton) {
         });
     });
 }
+
+// Painel de administrador - Registro de novos usuários
+const registerForm = document.getElementById('registerForm');
+const successMessage = document.getElementById('successMessage');
+const errorMessageAdmin = document.getElementById('errorMessage');
+
+if (registerForm) {
+    registerForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const newUserEmail = document.getElementById('newUserEmail').value;
+        const newUserPassword = document.getElementById('newUserPassword').value;
+
+        // Verificando se o usuário atual é um administrador
+        const currentUser = auth.currentUser;
+
+        if (currentUser && currentUser.email === 'admin@chatapp.com') {
+            auth.createUserWithEmailAndPassword(newUserEmail, newUserPassword)
+                .then(() => {
+                    successMessage.textContent = "Usuário registrado com sucesso.";
+                    errorMessageAdmin.textContent = '';
+                })
+                .catch((error) => {
+                    successMessage.textContent = '';
+                    errorMessageAdmin.textContent = "Erro: " + error.message;
+                });
+        } else {
+            errorMessageAdmin.textContent = "Apenas administradores podem registrar novos usuários.";
+        }
+    });
+}
+
+// Função de mensagens no chat permanece a mesma conforme mostrado anteriormente
