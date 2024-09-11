@@ -1,51 +1,41 @@
-/* Estilos básicos para as páginas de login, administração e chat */
-
 body {
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+#app {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
-    background-color: #f0f0f0;
 }
 
-.login-container, .admin-container, .chat-container {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    width: 300px;
-    text-align: center;
-}
-
-input[type="email"], input[type="password"], input[type="text"] {
+.container {
     width: 100%;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input, button {
+    margin-bottom: 10px;
     padding: 10px;
-    margin: 10px 0;
     border: 1px solid #ddd;
     border-radius: 4px;
 }
 
 button {
-    width: 100%;
-    padding: 10px;
-    border: none;
     background-color: #007bff;
-    color: white;
-    border-radius: 4px;
+    color: #fff;
+    border: none;
     cursor: pointer;
 }
 
 button:hover {
     background-color: #0056b3;
-}
-
-#chatBox {
-    height: 200px;
-    overflow-y: auto;
-    border: 1px solid #ddd;
-    margin-bottom: 10px;
-    padding: 10px;
-    background-color: #f9f9f9;
 }
