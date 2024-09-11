@@ -5,7 +5,7 @@ const firebaseConfig = {
   storageBucket: "chatdeaula-2c949.appspot.com",
   messagingSenderId: "788797048931",
   appId: "1:788797048931:web:67bc97cee7c80e75921056",
-  measurementId: "G-K7RVRQP1LQ"
+ // measurementId: "G-K7RVRQP1LQ"
 };
 
 // Inicializando o Firebase
