@@ -18,52 +18,6 @@
     </div>
 
     <!-- Scripts do Firebase -->
-    <script type="module">
-        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js';
-        import { getAuth } from 'https://www.gstatic.com/firebasejs/9.1.3/firebase-auth.js';
-        import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.1.3/firebase-firestore.js';
-
-        const firebaseConfig = {
-          apiKey: "AIzaSyA2rZO8yXC6MnXcsP_m7V-RFjPnixj9ONc",
-          authDomain: "chatdeaula-2c949.firebaseapp.com",
-          projectId: "chatdeaula-2c949",
-          storageBucket: "chatdeaula-2c949.appspot.com",
-          messagingSenderId: "788797048931",
-          appId: "1:788797048931:web:67bc97cee7c80e75921056",
-          measurementId: "G-K7RVRQP1LQ"
-        };
-
-        // Inicialize o Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
-
-        console.log("Firebase inicializado");
-    </script>
-    <!-- Seu script principal -->
-    <script type="module" src="script.js"></script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="login-container">
-        <h1>Login</h1>
-        <form id="loginForm">
-            <input type="email" id="email" placeholder="Email" required>
-            <input type="password" id="password" placeholder="Senha" required>
-            <button type="submit">Entrar</button>
-        </form>
-        <p id="errorMessage"></p>
-    </div>
-
-    <!-- Scripts do Firebase -->
     <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-firestore.js"></script>
