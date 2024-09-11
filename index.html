@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bate-papo Seguro</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="login-container">
+        <h1>Login no Bate-papo</h1>
+        <input type="text" id="username" placeholder="Usuário" />
+        <input type="password" id="password" placeholder="Senha" />
+        <button id="login-btn">Entrar</button>
+    </div>
+
+    <div id="chat-container" style="display:none;">
+        <h1>Salas de Bate-papo</h1>
+        <div id="rooms">
+            <button class="room-btn" data-room="public">Sala Pública</button>
+            <button class="room-btn" data-room="private">Sala Privada</button>
+        </div>
+        <div id="chat-window">
+            <div id="messages"></div>
+            <input type="text" id="message-input" placeholder="Digite sua mensagem..." />
+            <button id="send-btn">Enviar</button>
+        </div>
+        <button id="logout-btn">Sair</button>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
